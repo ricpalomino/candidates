@@ -1,12 +1,12 @@
 CREATE TABLE candidates (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL UNIQUE,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
     gender VARCHAR(10),
     country VARCHAR(100),
     currency VARCHAR(10),
     expected_salary DECIMAL(10, 2),
-    position_applied VARCHAR(100),
+    position_applied VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );

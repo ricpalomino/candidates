@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import com.seek.candidates.domain.model.Candidate;
 import com.seek.candidates.infrastructure.repository.CandidateRepository;
 
+import jakarta.persistence.EntityNotFoundException;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -35,6 +37,9 @@ public class CandidateServiceImpl implements CandidateService {
 
     @Override
     public void deleteCandidate(Long id) {
+        if(!candidateRepository.existsById(id)){
+            throw new EntityNotFoundException("Candidate not found with id " + id);
+        }
         candidateRepository.deleteById(id);
     }
 
@@ -44,7 +49,7 @@ public class CandidateServiceImpl implements CandidateService {
             .map(existingCandidate -> candidateRepository.toEntity(mergeCandidates(existingCandidate, candidate)))
             .map(candidateRepository::save)
             .map(candidateRepository::toDomain)
-            .orElseThrow(() -> new RuntimeException("Candidate not found with id " + id));
+            .orElseThrow(() -> new EntityNotFoundException("Candidate not found with id " + id));
     }
 
     private Candidate mergeCandidates(Candidate existing, Candidate updatedData) {

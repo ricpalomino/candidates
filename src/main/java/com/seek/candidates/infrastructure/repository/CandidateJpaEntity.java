@@ -1,7 +1,8 @@
 package com.seek.candidates.infrastructure.repository;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-
+import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -9,6 +10,8 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "candidates")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class CandidateJpaEntity {
 
     @Id
@@ -21,7 +24,7 @@ public class CandidateJpaEntity {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 10)
     private String gender;
 
     @Column(length = 100)
