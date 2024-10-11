@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.*;
 import com.seek.candidates.application.service.CandidateService;
 import com.seek.candidates.domain.model.Candidate;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping("/api/candidates")
+@Tag(name = "Candidatos", description = "CRUD for Candidates")
 public class CandidateController {
 
     private CandidateService candidateService;

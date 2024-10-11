@@ -12,10 +12,12 @@ import com.seek.candidates.application.service.UserDetailServiceImpl;
 import com.seek.candidates.infrastructure.dto.AuthLoginRequest;
 import com.seek.candidates.infrastructure.dto.AuthResponse;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/authenticate")
+@Tag(name = "Authentication", description = "Controller for Authentication")
 public class AuthController {
 
     @Autowired

@@ -29,7 +29,7 @@ public class SecurityConfig {
                 .requestMatchers("/api/authenticate/**").permitAll()
                 //configurar los endpoints securizados privados
                 .requestMatchers("/api/candidates/**").authenticated()
-                .anyRequest().denyAll()
+                .anyRequest().permitAll()
             )
             .addFilterBefore(new JWTAuthenticationFilter(jwtUtil), BasicAuthenticationFilter.class);
             return http.build();
